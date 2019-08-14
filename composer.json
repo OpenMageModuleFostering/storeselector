@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/storeselector",
+    "type": "magento-module",
+    "license": "GPL",
+    "homepage": "",
+    "description": "Store Selector Using Map",
+    "authors": [
+    {
+        "name": "Gaggle Thread",
+        "email": "gaggle.thread@gmail.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

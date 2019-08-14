@@ -1,0 +1,189 @@
+<?php
+/**
+ * Store Selector Template
+ *
+ * @see Gaggle_Storeselector_Block_Storeselector
+ */
+?>
+<?php if($this->shouldShow()){ ?>
+	<div class="loader-wrapper" style="display:none;z-index:9999;">
+		<div class="loader"><img src="<?php echo Mage::getBaseUrl('skin') ?>frontend/base/default/gaggle/storeselector/images/gif-load.gif"/></div>
+	</div>
+	<div id="map_container">
+		<div class="map_flag">
+			<div class="map_content">
+				<div class="map_wrap"><img src="<?php echo $this->getMapForStore(500,500) ?>" /></div>
+				<div class="text_wrap">	<a id="storeselect" href="#storeselector">STORE</a></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="storeselector" style="display:none;">
+		<div class="top">
+			<div id="storeselector-header" style="width:600px;">
+				Enter Your Country, State , City or Zip Code :
+			</div>
+			<strong>Address or Zip Code:</strong> <input type="text" name="location" id="store_location" /><select type="text" name="distance" id="store_distance"><?php echo $this->getRangeOptions(); ?></select>
+			<a class="load-sotore" onclick="loadMarkers('<?php echo Mage::getUrl('storeselector/storeselector/getmarkers') ?>');">Load Stores</a>
+			<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+		</div>
+		<div class="bottom">
+			<div id="map-sidebar"> </div>
+			<div id="map_canvas" ></div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+					var map_source = '';
+					var myOptions = '';
+					var map='';
+
+					var infowindow = new google.maps.InfoWindow();
+					
+					function loadMarkers(url)
+					{	
+						if(document.getElementById('store_location').value!=''&&document.getElementById('store_distance').value!='')
+						{	storeSelector(".loader-wrapper").css('display','block');
+							url=url+'location/'+document.getElementById('store_location').value+'/distance/'+document.getElementById('store_distance').value;
+							var xmlhttp;
+							if (window.XMLHttpRequest)
+							  {// code for IE7+, Firefox, Chrome, Opera, Safari
+							  xmlhttp=new XMLHttpRequest();
+							  }
+							else
+							  {// code for IE6, IE5
+							  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+							  }
+							xmlhttp.onreadystatechange=function()
+							  {
+							  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+								{
+									storeSelector("#storeselector .bottom").css('display','block');
+									loadMap(xmlhttp.responseText);
+									storeSelector(".loader-wrapper").css('display','none');
+									
+								}
+							  }
+							xmlhttp.open("POST",url,true);
+							xmlhttp.send();
+						}
+						else
+						{
+							alert('Please Fill Address..');
+						}
+					}
+					
+					function loadMap(src)
+					{
+						map_source=JSON.parse(src);
+						if(map_source.length>0)
+						{
+							myOptions = {
+								center: new google.maps.LatLng(map_source[0].lat,map_source[0].lng),
+								mapTypeId: google.maps.MapTypeId.ROADMAP,
+								zoom:4
+							};
+							var sidebar='<ul>';
+							map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+							markercount=65;
+							for (var i = 0; i < map_source.length; i++) {
+								var myLatlng = new google.maps.LatLng(map_source[i].lat,map_source[i].lng);
+								iconnumber=String.fromCharCode(markercount++);
+								var content ='<span class="numbering">'+iconnumber+'</span> <span class="details">'+map_source[i].formatted_address+'<a onclick="selectStore(\'<?php echo Mage::getBaseUrl() ?>?___store='+map_source[i].store_code+'\',\''+map_source[i].formatted_address+'\',\''+map_source[i].store_code+'\')">Select Store</a><span>';
+								sidebar+='<li>'+content+'</li>';
+								var marker = new google.maps.Marker({
+									map: map,
+									title: map_source[i].formatted_address,
+									icon: "https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld="+iconnumber+"|FFFF00|000000",
+									shadow: "https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld="+iconnumber+"|FFFF00|000000",
+									position: myLatlng
+								});
+
+								google.maps.event.addListener(marker, "click", (function(marker, content) {
+									return function() {
+										
+										infowindow.setContent(content);
+										infowindow.open(map, marker);
+										
+									}
+								})(marker, content));
+							}
+							sidebar+='</ul>';
+							storeSelector("#storeselect").fancybox().resize();
+							document.getElementById('map-sidebar').innerHTML=sidebar;
+						}
+						else
+						{
+							alert('There Is No Store In Selected Range.');
+						}
+					}
+					function selectStore(store_url,store_address,store_code)
+					{
+						url='<?php echo Mage::getUrl('storeselector/storeselector/selectstore') ?>address/'+store_address+'/code/'+store_code;
+						storeSelector(".loader-wrapper").css('display','block');
+						var xmlhttp;
+							if (window.XMLHttpRequest)
+							  {// code for IE7+, Firefox, Chrome, Opera, Safari
+							  xmlhttp=new XMLHttpRequest();
+							  }
+							else
+							  {// code for IE6, IE5
+							  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+							  }
+							xmlhttp.onreadystatechange=function()
+							  {
+								if (xmlhttp.readyState==4 && xmlhttp.status==200)
+								{
+									if(xmlhttp.responseText=='success')
+									{
+										window.location=store_url;
+									}
+								}
+							  }
+							xmlhttp.open("POST",url,true);
+							xmlhttp.send();
+					}
+
+	</script>
+
+	<script type="text/javascript">
+		storeSelector(document).ready(function() {
+
+			storeSelector("#storeselect").fancybox({
+					'closeBtn': false ,
+					/* 'keys' : {
+						'close'  : true
+					  }, */
+					'helpers':{ 
+							'overlay' : {'closeClick': true}
+							}
+				});
+				centerloader();
+				storeSelector("#storeselector .bottom").css('display','none');
+			//storeSelector("#storeselect").trigger('click');
+			storeSelector(window).resize(function(){
+					
+				centerloader();
+				
+			});
+			
+		});
+		
+		storeSelector('#map_container').click(function(){
+			
+			//storeSelector('#storeselect').click();
+			storeSelector.fancybox.open('#storeselector');
+		});
+		function centerloader()
+		{
+				width=storeSelector(".loader-wrapper img").width();
+				
+				window_width=storeSelector(window).width();
+				window_height=storeSelector(window).height();
+				l_left=(window_width/2)-(width/2);
+				height=storeSelector(".loader-wrapper .loader").height();
+				l_top=(window_height/2)-(height/2);
+				storeSelector(".loader-wrapper img").css('left',l_left+'px').css('top',l_top+'px');
+		}
+	</script>
+<?php } ?>

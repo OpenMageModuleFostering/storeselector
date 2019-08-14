@@ -1,0 +1,21 @@
+<layout version="0.1.0">
+	<default>
+		<reference name="head">
+			<action method="addItem"><type>skin_js</type><script>gaggle/storeselector/js/jquery-1.10.1.min.js</script></action>
+			<action method="addItem"><type>skin_js</type><script>gaggle/storeselector/js/jquery.fancybox.js</script></action>
+			<action method="addItem"><type>skin_js</type><script>gaggle/storeselector/js/jquery.fancybox-buttons.js</script></action>
+			<action method="addItem"><type>skin_css</type><stylesheet>gaggle/storeselector/css/jquery.fancybox.css?v=2.1.5</stylesheet></action>
+			<action method="addItem"><type>skin_css</type><stylesheet>gaggle/storeselector/css/jquery.fancybox-buttons.css?v=1.0.5</stylesheet></action>
+			<action method="addItem"><type>skin_css</type><stylesheet>gaggle/storeselector/css/styles.css</stylesheet></action>
+			
+		</reference>
+		<reference name="content">
+			<block type="storeselector/storeselector" name="storeselector" template="gaggle/storeselector/storeselector.phtml"/>
+		</reference>
+	</default>
+	<!-- <catalog_product_view>
+		<reference name="content">
+			<block type="core/template" name="storeselector" template="storeselector/storeselector.phtml"/>
+		</reference>
+	</catalog_product_view> -->
+</layout>

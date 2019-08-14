@@ -1,0 +1,8 @@
+<config>
+  <modules>
+    <Gaggle_Storeselector>
+      <active>true</active>
+      <codePool>local</codePool>
+    </Gaggle_Storeselector>
+  </modules>
+</config>

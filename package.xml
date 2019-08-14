@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>storeselector</name>
+    <version>1.0.0</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">GPL</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Store Selector Using Map</summary>
+    <description>Store Selector Using Map</description>
+    <notes>Store Selector Using Map</notes>
+    <authors><author><name>Gaggle Thread</name><user>Gaggle_Thread</user><email>gaggle.thread@gmail.com</email></author></authors>
+    <date>2014-09-17</date>
+    <time>17:56:31</time>
+    <contents><target name="magelocal"><dir name="Gaggle"><dir name="Storeselector"><dir name="Block"><file name="Storeselector.php" hash="69d73122c75b86e86ba50612ae55bf53"/></dir><dir name="Helper"><file name="Data.php" hash="9398287a41533b500cc8a93cddd10586"/></dir><dir name="controllers"><file name="StoreselectorController.php" hash="6366ab663a22bf523d9409fccc835df5"/></dir><dir name="etc"><file name="config.xml" hash="224c6103dc041b2d39438e97dff731b8"/><file name="system.xml" hash="ed4fc471934f365d7d23835a03cd8c8b"/></dir><dir name="sql"><dir name="storeselector_setup"><file name="mysql4-install-0.1.4.php" hash="458131eb46a80ae46a49a4fba858a0bd"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Gaggle_Storeselector.xml" hash="1f0fcbf3146f2d95a5b27b8431bda4c9"/></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><dir name="gaggle"><file name="storeselector.xml" hash="3a1208e6f9195c851e2971ce4fa75e7b"/></dir></dir><dir name="template"><dir name="gaggle"><dir name="storeselector"><file name="storeselector.phtml" hash="7561e77247ac732eb6a491b4e237f7e7"/></dir></dir></dir></dir></dir></dir></target><target name="mageskin"><dir name="frontend"><dir name="base"><dir name="default"><dir name="gaggle"><dir name="storeselector"><dir name="css"><file name="blank.gif" hash="325472601571f31e1bf00674c368d335"/><file name="fancybox_buttons.png" hash="b448080f8615e664b7788c7003803b59"/><file name="fancybox_loading.gif" hash="328cc0f6c78211485058d460e80f4fa8"/><file name="fancybox_loading@2x.gif" hash="f92938639fa894a0e8ded1c3368abe98"/><file name="fancybox_overlay.png" hash="77aeaa52715b898b73c74d68c630330e"/><file name="fancybox_sprite.png" hash="783d4031fe50c3d83c960911e1fbc705"/><file name="fancybox_sprite@2x.png" hash="ed9970ce22242421e66ff150aa97fe5f"/><file name="jquery.fancybox-buttons.css" hash="cac75538c2e3ddfadef839feaca8e356"/><file name="jquery.fancybox-thumbs.css" hash="52ddd84a9f42c1d4cd86d518a7f7e8bc"/><file name="jquery.fancybox.css" hash="6c55951ce1e3115711f63f99b7501f3a"/><file name="styles.css" hash="d3168a230a0c84887e02be371ff1d47a"/></dir><dir name="images"><file name="gif-load.GIF" hash="06b06d0a607bfbf9cf490b9daa526e84"/></dir><dir name="js"><file name="jquery-1.10.1.min.js" hash="06a430202c3733b94599282436c44329"/><file name="jquery.fancybox-buttons.js" hash="168c440b8b2943bd631894e65611887b"/><file name="jquery.fancybox-media.js" hash="528795e0bccb3a050ecd09462c730a0d"/><file name="jquery.fancybox-thumbs.js" hash="c78559bd68e5cee44612642d96507ad1"/><file name="jquery.fancybox.js" hash="ba821e5bf03d33494668d8c03047e8ec"/><file name="jquery.fancybox.pack.js" hash="d31f4de31c07d05b9e1705f4c7ad3cc2"/></dir></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<tabs>
+        <gaggle translate="label" module="storeselector">
+            <label>Gaggle Thread</label>
+            <sort_order>100</sort_order>
+        </gaggle>
+    </tabs>
+    <sections>
+        <storeselector_options translate="label" module="storeselector">
+            <label>Manage Store Slector</label>
+			<tab>gaggle</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>       
+            <groups>
+                <activation translate="label">
+                    <label>Manage Store Slector</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<module>
+							<label>Enable Store Selector</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>                    
+						</module>
+						<range>
+							<label>Kilometer range</label>
+							<frontend_type>text</frontend_type>
+							<comment>Comma Separated Values For Forntend Dropdown.</comment>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>                    
+						</range>
+						<service>
+							<label></label>
+							<frontend_type>label</frontend_type>
+							<comment>Need Customize Extensions according to you? Contact Us at gaggle.thread@gmail.com</comment>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>                    
+						</service>							
+					</fields>                           
+                </activation>
+				<store translate="label">
+                    <label>Manage Store Slector</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<location>
+							<label>Location</label>
+							<frontend_type>text</frontend_type>
+							<comment>Enter Loacation Of Store eg.City,Country or Zip Code</comment>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>                    
+						</location>				
+					</fields>                           
+                </store>
+				
+            </groups>             
+        </storeselector_options>
+    </sections>     
+</config>

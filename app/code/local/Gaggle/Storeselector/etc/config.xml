@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Gaggle_Storeselector>
+			<version>1.0.0</version>
+		</Gaggle_Storeselector>
+	</modules>
+	<frontend>
+		<routers>
+	 		<storeselector>
+				<use>standard</use>
+				<args>
+				
+					<module>Gaggle_Storeselector</module>
+					<frontName>storeselector</frontName>
+					
+				</args>
+			</storeselector> 
+
+		</routers>
+
+    <layout>
+
+		<updates>
+
+			<storeselector>
+
+				<file>gaggle/storeselector.xml</file>
+
+			</storeselector>
+		</updates>
+
+    </layout>
+
+  </frontend>
+  <admin>
+  		<routers>
+  		 	<storeselector>
+  			<use>admin</use>
+  			<args>
+  				<module>Gaggle_Storeselector</module>
+  				<frontName>storeselector</frontName>
+  			</args>
+  			</storeselector>
+  		</routers>
+  </admin>
+  <adminhtml>
+  		<acl>
+  			<resources>
+  				<all>
+  					<title>Manage Store Slector</title>
+  				</all>
+  				<admin>
+  					<children>
+						<system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <storeselector_options>
+                                            <title>Manage Store Slector</title>
+                                        </storeselector_options>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+  						<Gaggle_Storeselector>
+  							<title>admin_children</title>
+  							<sort_order>11</sort_order>
+  						</Gaggle_Storeselector>
+  					</children>
+  				</admin>
+  			</resources>
+  		</acl>
+
+  		<layout>
+  			<updates>
+  				<storeselector>
+  					<file>storeselector.xml</file>
+  				</storeselector>
+  			</updates>
+  		</layout>
+  </adminhtml>
+
+  <global>
+
+    <helpers>
+
+      <storeselector>
+
+        <class>Gaggle_Storeselector_Helper</class>
+
+      </storeselector>
+    </helpers>
+ 
+			<blocks>
+
+				  <storeselector>
+
+								<class>Gaggle_Storeselector_Block</class>
+
+				  </storeselector> 		
+					
+			</blocks>
+			
+			<resources>
+					<storeselector_setup>
+			            <setup>
+			                <module>Gaggle_Storeselector</module>
+			                <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+			            </setup>
+						<connection>
+							<use>eav_setup</use>
+						</connection>
+			        </storeselector_setup>
+			   	 </resources>
+ 
+  </global>
+  <default>
+		 <storeselector_options>
+			 <activation translate="default_description" module="page">
+				 <module>0</module>
+				 <range>50,100,500</range>
+			 </activation>
+			 
+		 </storeselector_options>
+	</default>
+
+</config>
