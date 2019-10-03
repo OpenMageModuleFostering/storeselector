@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/storeselector",
+    "name": "openmage-module-fostering\/storeselector",
     "type": "magento-module",
-    "license": "GPL",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "Store Selector Using Map",
     "authors": [
